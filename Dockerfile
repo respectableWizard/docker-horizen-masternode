@@ -1,4 +1,3 @@
-# TODO: Build on this image then slim it down
 FROM ubuntu:xenial
 MAINTAINER respectableWizard
 
@@ -8,7 +7,7 @@ ARG VERSION
 
 ENV USER horizen
 ENV COMPONENT ${USER}
-ENV HOME /${USER}
+ENV HOME /home/${USER}
 
 # add user with specified (or default) user/group ids
 ENV USER_ID ${USER_ID:-1000}

@@ -13,14 +13,12 @@ if [ ! -e "$FILE" ]; then
     echo "Creating $FILENAME"
 
     # Seed a random password for JSON RPC server
-    # I might need to set daemon=0 and listen=0 just following the readme for now
-    # 
     cat <<EOF > $FILE
 printtoconsole=${PRINTTOCONSOLE:-1}
 externalip=${EXTERNALIP}
 rpcbind=127.0.0.1
 rpcallowip=127.0.0.1
-server=0
+server=1
 masternode=1
 daemon=0
 listen=0
