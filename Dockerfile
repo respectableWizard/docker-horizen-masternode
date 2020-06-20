@@ -36,7 +36,7 @@ RUN apt-get install -y --no-install-recommends  software-properties-common build
     && gpg --keyserver keyserver.ubuntu.com  --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669  || gpg --keyserver ha.pool.sks-keyservers.net --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669 \
     && gpg --export 219F55740BBF7A1CE368BA45FB7053CE4991B669 | apt-key add - \
     && apt-get update && apt-get -y install zen \
-    &&  add-apt-repository ppa:certbot/certbot -y \
+    && add-apt-repository ppa:certbot/certbot -y \
     && apt-get install certbot -y \
     && apt-get remove software-properties-common build-essential apt-transport-https lsb-release dirmngr pwgen git jq ufw curl aria2 -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
