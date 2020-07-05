@@ -16,8 +16,8 @@ if [ ! -e "$FILE" ]; then
     cat <<EOF > $FILE
 printtoconsole=${PRINTTOCONSOLE:-1}
 externalip=${EXTERNALIP}
-rpcbind=127.0.0.1
-rpcallowip=127.0.0.1
+rpcbind=$(hostname -I | awk '{print $1}')
+rpcallowip=${RPCALLOWIP:-172.17.0.0/16}
 server=1
 masternode=1
 daemon=0
@@ -26,7 +26,8 @@ txindex=1
 logtimestamps=1
 rpcuser=${RPCUSER:-horizenrpc}
 rpcpassword="${RPCPASSWORD:-`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`}"
-rpcprot=18231
+rpcport=${RPCPORT:-18231}
+port=${PORT:-9033}
 rpcworkqueue=512
 tlscertpath=${DIR}/letsencrypt/live/${FQDN}/cert.pem
 tlskeypath=${DIR}/letsencrypt/live/${FQDN}/privkey.pem

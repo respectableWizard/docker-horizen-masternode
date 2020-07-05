@@ -43,6 +43,7 @@ RUN apt-get install -y --no-install-recommends  software-properties-common build
     && apt-get autoremove -y
 
 EXPOSE 9033
+EXPOSE 18231
 
 VOLUME ["${HOME}"]
 WORKDIR ${HOME}
