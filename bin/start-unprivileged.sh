@@ -17,7 +17,7 @@ if [ ! -e "$FILE" ]; then
 printtoconsole=${PRINTTOCONSOLE:-1}
 externalip=${EXTERNALIP}
 rpcbind=$(hostname -I | awk '{print $1}')
-rpcallowip=${RPCALLOWIP:-172.17.0.0/16}
+rpcallowip=$(hostname -I | awk '{print $1}')
 server=1
 masternode=1
 daemon=0
