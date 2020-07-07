@@ -29,8 +29,8 @@ rpcpassword="${RPCPASSWORD:-`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32
 rpcport=${RPCPORT:-18231}
 port=${PORT:-9033}
 rpcworkqueue=512
-tlscertpath=${DIR}/letsencrypt/live/${FQDN}/cert.pem
-tlskeypath=${DIR}/letsencrypt/live/${FQDN}/privkey.pem
+tlscertpath=/etc/letsencrypt/live/${FQDN}/cert.pem
+tlskeypath=/etc/letsencrypt/live/${FQDN}/privkey.pem
 EOF
 
 fi
@@ -41,5 +41,5 @@ cat $FILE
 ls -lah $DIR/
 
 echo "Initialization completed successfully"
-update-ca-certificates
+
 zen-fetch-params && exec $EXECUTABLE

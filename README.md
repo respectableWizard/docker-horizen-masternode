@@ -3,6 +3,11 @@ horizen masternode for docker
 
 Docker image that runs the horizen daemon which can be turned into a masternode with the correct configuration.
 
+This docker node need 2 volumes mounts.
+
+One to let's encrypt to cert dir
+One to store the blockchain
+
 # TODO
 Quick Start 
 -----------
