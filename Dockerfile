@@ -32,8 +32,12 @@ RUN set -x \
 
 RUN apt-get install -y --no-install-recommends software-properties-common apt-transport-https lsb-release dirmngr \
     && apt-add-repository universe -y  \
-    && echo 'deb https://zencashofficial.github.io/repo/ '$(lsb_release -cs)' main' | tee /etc/apt/sources.list.d/zen.list \
-    && gpg --keyserver keyserver.ubuntu.com  --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669  || gpg --keyserver ha.pool.sks-keyservers.net --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669 \
+    && echo 'deb https://HorizenOfficial.github.io/repo/ '$(lsb_release -cs)' main' | tee /etc/apt/sources.list.d/zen.list \
+    &&  gpg --batch --keyserver ha.pool.sks-keyservers.net --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669 || \
+        gpg --batch --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669 || \
+        gpg --batch --keyserver pgp.mit.edu --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669 || \
+        gpg --batch --keyserver keyserver.pgp.com --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669 || \
+        gpg --batch --keyserver pgp.key-server.io --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669 \
     && gpg --export 219F55740BBF7A1CE368BA45FB7053CE4991B669 | apt-key add - \
     && apt-get update && apt-get -y install zen \
     && apt-get autoremove -y \
